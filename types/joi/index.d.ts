@@ -1,3 +1,6 @@
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+import * as Module from 'joi';
+
 // Type definitions for joi 14.3
 // Project: https://github.com/hapijs/joi
 // Definitions by: Bart van der Schoor <https://github.com/Bartvds>
@@ -856,7 +859,7 @@ export interface ObjectSchema extends AnySchema {
     /**
      * Renames a key to another name (deletes the renamed key).
      */
-    rename(from: string, to: string, options?: RenameOptions): this;
+    rename(from: string | RegExp, to: string, options?: RenameOptions): this;
 
     /**
      * Verifies an assertion where.
@@ -1200,9 +1203,6 @@ export function reach(schema: ObjectSchema, path: string | string[]): Schema;
  */
 export function extend(extension: Extension|Extension[], ...extensions: Array<Extension|Extension[]>): any;
 
-// --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
-import * as Module from 'joi';
 export type Root = typeof Module;
 export type DefaultsFunction = (root: Schema) => Schema;
 
